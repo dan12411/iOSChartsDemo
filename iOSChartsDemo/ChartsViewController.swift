@@ -25,7 +25,7 @@ class ChartsViewController: UIViewController {
     
     func setChart(dataPoints: [String], values: [Double]) {
         
-        let formato:BarChartFormatter = BarChartFormatter()
+        let formato:OthersChartFormatter = OthersChartFormatter()
         let xaxis:XAxis = XAxis()
         
         var dataEntries: [ChartDataEntry] = []
@@ -68,5 +68,16 @@ class ChartsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+public class OthersChartFormatter: NSObject, IAxisValueFormatter{
+    
+    var months: [String]! = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    
+    
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        
+        return months[Int(value)]
     }
 }
